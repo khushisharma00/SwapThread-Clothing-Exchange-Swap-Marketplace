@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  server-tests:
+    name: API tests (Jest + Supertest + MongoDB)
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:7
+        ports:
+          - 27017:27017
+    env:
+      MONGODB_URI_TEST: mongodb://127.0.0.1:27017
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install server dependencies
+        run: npm install --prefix server
+      - name: Run tests
+        run: npm test --prefix server -- --ci
+
+  client-build:
+    name: Build React client
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install client dependencies
+        run: npm install --prefix client
+      - name: Build
+        run: npm run build --prefix client

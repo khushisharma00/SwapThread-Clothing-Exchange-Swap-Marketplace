@@ -1,0 +1,23 @@
+# Render Blueprint — deploys ReWear as ONE web service:
+# Express serves the REST API under /api and the built React app for every other route.
+services:
+  - type: web
+    name: rewear-clothing-swap-marketplace
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "20"
+      - key: MONGODB_URI
+        sync: false # paste your MongoDB Atlas connection string in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true # Render generates a long random secret for you
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CLIENT_ORIGIN
+        sync: false # e.g. https://rewear-clothing-swap-marketplace.onrender.com

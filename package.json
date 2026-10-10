@@ -1,0 +1,20 @@
+{
+  "name": "rewear-clothing-swap-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ReWear - a clothing exchange & swap marketplace (React + Node.js/Express + MongoDB)",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "build": "npm install --prefix server --omit=dev && npm install --prefix client --include=dev && npm run build --prefix client",
+    "start": "npm start --prefix server",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "create-admin": "npm run create-admin --prefix server",
+    "test": "npm test --prefix server"
+  },
+  "license": "MIT"
+}
