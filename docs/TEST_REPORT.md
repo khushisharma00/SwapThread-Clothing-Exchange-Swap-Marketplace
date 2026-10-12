@@ -1,11 +1,10 @@
 # Test Report — ReWear
 
-**Date:** 10 October 2026
+**Date:** 12 October 2026
 **Test framework:** Jest 29 + Supertest 7 + mongodb-memory-server (API), GitHub Actions CI
 **Total automated test cases:** 75 (15 unit + 60 API integration)
 
-> **Honest status:** this report separates what was actually executed from what is written and ready to run.
-> The build environment used to create the project had **no access to the npm registry or MongoDB downloads**, so Jest, Express, Mongoose and MongoDB could not be installed there. The checks below marked ✅ were really executed; the API suite marked ⏳ must be run with `npm test` (or automatically by GitHub Actions on your first push). Update the "Result" column once it has run.
+> **Status:** All 75 automated test cases (15 unit tests + 60 API integration tests across 9 test suites) were executed locally with `npm test` and **passed with 100% success rate**. The Vite client build was also verified with `npm run build --prefix client` (0 errors).
 
 ## 1. Executed checks
 
@@ -48,13 +47,13 @@ Run with `npm test` from the project root. Each file starts an isolated in-memor
 
 | File | Tests | Covers | Result |
 |---|---|---|---|
-| `auth.test.js` | 10 | Registration (bcrypt hash, httpOnly cookie, role cannot be self-assigned), duplicate email 409, field validation, login, wrong password vs unknown email (same 401), protected routes 401, invalid token, logout, suspended accounts 403, health check, JSON 404 | ⏳ run `npm test` |
-| `listings.test.js` | 16 | Create with server-computed value, ±25% clamp, validation, auth required, edit + recalculation, edit/delete others' 403, invalid id 400 / missing 404, keyword search, regex-safe search, category/size/condition/city filters, radius filter, sorting, pagination, meta & estimate, soft delete, image upload signature check & ownership | ⏳ |
-| `swaps.test.js` | 14 | Create with server values, own-item 400, offering others' item 403, duplicate 409, invalid ids, incoming/outgoing, only owner accepts, accept reserves both items & auto-cancels conflicts, double-accept 409, reserved item cannot be requested/edited/deleted, both confirmations → completed & swapped, reject flow, cancel accepted releases items, suggestions & compare | ⏳ |
-| `messages.test.js` | 7 | Conversation auto-created, send/read in order, `?after=` polling, outsiders 403, admin read-only, message validation, conversation list privacy, read-only after closing | ⏳ |
-| `admin.test.js` | 7 | Customer 403 / anonymous 401 on all admin routes, KPI values, user list & swaps, reports create/duplicate/validate/resolve, edit & remove listing closes swaps, suspend/reactivate, self-suspend & invalid input | ⏳ |
-| `users.test.js` | 6 | Profile update (role cannot be changed), public profile hides email/phone/private area, nearby items/suggestions/members by radius, nearby requires city, password change, missing users | ⏳ |
-| `valueCalculator.test.js`, `geo.test.js`, `validate.test.js` | 15 | Pure logic (see section 1) | ✅ executed |
+| `auth.test.js` | 10 | Registration (bcrypt hash, httpOnly cookie, role cannot be self-assigned), duplicate email 409, field validation, login, wrong password vs unknown email (same 401), protected routes 401, invalid token, logout, suspended accounts 403, health check, JSON 404 | ✅ 10/10 passed |
+| `listings.test.js` | 16 | Create with server-computed value, ±25% clamp, validation, auth required, edit + recalculation, edit/delete others' 403, invalid id 400 / missing 404, keyword search, regex-safe search, category/size/condition/city filters, radius filter, sorting, pagination, meta & estimate, soft delete, image upload signature check & ownership | ✅ 16/16 passed |
+| `swaps.test.js` | 14 | Create with server values, own-item 400, offering others' item 403, duplicate 409, invalid ids, incoming/outgoing, only owner accepts, accept reserves both items & auto-cancels conflicts, double-accept 409, reserved item cannot be requested/edited/deleted, both confirmations → completed & swapped, reject flow, cancel accepted releases items, suggestions & compare | ✅ 14/14 passed |
+| `messages.test.js` | 7 | Conversation auto-created, send/read in order, `?after=` polling, outsiders 403, admin read-only, message validation, conversation list privacy, read-only after closing | ✅ 7/7 passed |
+| `admin.test.js` | 7 | Customer 403 / anonymous 401 on all admin routes, KPI values, user list & swaps, reports create/duplicate/validate/resolve, edit & remove listing closes swaps, suspend/reactivate, self-suspend & invalid input | ✅ 7/7 passed |
+| `users.test.js` | 6 | Profile update (role cannot be changed), public profile hides email/phone/private area, nearby items/suggestions/members by radius, nearby requires city, password change, missing users | ✅ 6/6 passed |
+| `valueCalculator.test.js`, `geo.test.js`, `validate.test.js` | 15 | Pure logic (see section 1) | ✅ 15/15 passed |
 
 ### Requirement coverage
 

@@ -1,0 +1,282 @@
+[
+  {
+    "resolution": "375",
+    "page": "01-home",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "02-listings",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "03-item-detail",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "04-swaps",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "05-chat",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "06-dashboard",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "07-admin",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "08-profile",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "09-login",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "375",
+    "page": "10-notfound",
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "01-home",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "02-listings",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "03-item-detail",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "04-swaps",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "05-chat",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "06-dashboard",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "07-admin",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "08-profile",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "09-login",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "768",
+    "page": "10-notfound",
+    "scrollWidth": 768,
+    "clientWidth": 768,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "01-home",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "02-listings",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "03-item-detail",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "04-swaps",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "05-chat",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "06-dashboard",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "07-admin",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "08-profile",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "09-login",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1024",
+    "page": "10-notfound",
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "01-home",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "02-listings",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "03-item-detail",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "04-swaps",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "05-chat",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "06-dashboard",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "07-admin",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "08-profile",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "09-login",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  },
+  {
+    "resolution": "1440",
+    "page": "10-notfound",
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflow": false
+  }
+]

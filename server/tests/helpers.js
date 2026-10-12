@@ -32,10 +32,13 @@ async function stopDB() {
 
 const PASSWORD = 'Passw0rd!';
 
-async function registerAgent(name, city = 'New Delhi') {
+async function registerAgent(name, ...cityArgs) {
+  const city = cityArgs.length > 0 ? cityArgs[0] : 'New Delhi';
   const agent = request.agent(app);
   const email = `${name.toLowerCase().replace(/\s+/g, '.')}.${Math.random().toString(36).slice(2, 7)}@test.dev`;
-  const res = await agent.post('/api/auth/register').send({ name, email, password: PASSWORD, city });
+  const body = { name, email, password: PASSWORD };
+  if (city) body.city = city;
+  const res = await agent.post('/api/auth/register').send(body);
   if (res.status !== 201) throw new Error(`register failed: ${res.status} ${JSON.stringify(res.body)}`);
   return { agent, user: res.body.data.user, email };
 }

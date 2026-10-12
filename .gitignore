@@ -4,6 +4,7 @@ node_modules/
 # Builds
 client/dist/
 coverage/
+.data/
 
 # Environment files (NEVER commit secrets)
 .env
