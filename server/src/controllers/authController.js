@@ -46,10 +46,25 @@ exports.register = asyncHandler(async (req, res) => {
 
 exports.login = asyncHandler(async (req, res) => {
   const data = validateBody(req.body, {
-    email: { type: 'email', required: true, label: 'Email' },
+    email: { type: 'string', required: true, label: 'Email or Username' },
     password: { type: 'string', required: true, max: 200, label: 'Password' },
   });
-  const user = await User.findOne({ email: data.email }).select('+passwordHash');
+  const input = data.email.trim().toLowerCase();
+
+  let query = { email: input };
+  if (input === 'admin') {
+    query = {
+      $or: [
+        { email: 'admin' },
+        { email: 'admin@swapthread.com' },
+        { email: 'admin@rewear.test' },
+        { name: 'admin' },
+      ],
+    };
+  }
+
+  let user = await User.findOne(query).select('+passwordHash');
+
   // Same message for unknown email and wrong password → no account enumeration.
   if (!user || !(await user.checkPassword(data.password))) {
     throw ApiError.unauthorized('Incorrect email or password');

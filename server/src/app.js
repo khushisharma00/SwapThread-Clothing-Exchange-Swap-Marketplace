@@ -20,22 +20,36 @@ function createApp() {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'img-src': ["'self'", 'data:', 'blob:'],
+          'img-src': ["'self'", 'data:', 'blob:', 'https://res.cloudinary.com'],
           'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
           'font-src': ["'self'", 'https://fonts.gstatic.com', 'data:'],
-          'connect-src': ["'self'"],
+          'connect-src': ["'self'", 'https://res.cloudinary.com'],
         },
       },
       crossOriginResourcePolicy: { policy: 'same-site' },
     })
   );
 
+  // Top-level health check endpoint (as required by container orchestrators & Render)
+  app.get('/health', (req, res) => {
+    const mongoose = require('mongoose');
+    const isDbConnected = mongoose.connection.readyState === 1;
+    res.status(isDbConnected ? 200 : 503).json({
+      status: isDbConnected ? 'ok' : 'degraded',
+      database: isDbConnected ? 'connected' : 'disconnected',
+      time: new Date().toISOString(),
+    });
+  });
+
   // CORS: only explicitly allowed origins may send credentialed requests.
   app.use(
     cors({
       origin(origin, cb) {
-        if (!origin || env.CLIENT_ORIGINS.includes(origin)) return cb(null, true);
-        return cb(null, false);
+        if (!origin) return cb(null, true);
+        if (env.CLIENT_ORIGINS.includes(origin) || env.CLIENT_ORIGINS.includes('*')) {
+          return cb(null, true);
+        }
+        return cb(new Error(`CORS blocked for origin: ${origin}`));
       },
       credentials: true,
     })
@@ -51,7 +65,7 @@ function createApp() {
     app.use(express.static(clientDist, { maxAge: '1h', index: false }));
     app.get('*', (req, res) => res.sendFile(path.join(clientDist, 'index.html')));
   } else {
-    app.get('/', (req, res) => res.json({ success: true, message: 'ReWear API is running. Build the client to serve the web app from here.' }));
+    app.get('/', (req, res) => res.json({ success: true, message: 'SwapThread API is running. Build the client to serve the web app from here.' }));
   }
 
   app.use(notFound);

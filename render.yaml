@@ -1,23 +1,31 @@
-# Render Blueprint — deploys ReWear as ONE web service:
-# Express serves the REST API under /api and the built React app for every other route.
+# Render Blueprint — deploys SwapThread as ONE unified web service:
+# Express serves the REST API under /api and the built React app from client/dist for all routes.
 services:
   - type: web
-    name: rewear-clothing-swap-marketplace
+    name: swapthread
     runtime: node
     plan: free
     buildCommand: npm run build
     startCommand: npm start
-    healthCheckPath: /api/health
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
       - key: NODE_VERSION
         value: "20"
       - key: MONGODB_URI
-        sync: false # paste your MongoDB Atlas connection string in the Render dashboard
+        sync: false # Paste MongoDB Atlas connection string in Render dashboard
       - key: JWT_SECRET
-        generateValue: true # Render generates a long random secret for you
+        generateValue: true # Render generates a secure random 256-bit secret automatically
       - key: JWT_EXPIRES_IN
         value: 7d
       - key: CLIENT_ORIGIN
-        sync: false # e.g. https://rewear-clothing-swap-marketplace.onrender.com
+        sync: false # e.g. https://swapthread.onrender.com (or leave blank to match current origin)
+      - key: CLOUDINARY_URL
+        sync: false # Optional Cloudinary connection string (cloudinary://api_key:api_secret@cloud_name)
+      - key: ADMIN_EMAIL
+        sync: false # Admin login email
+      - key: ADMIN_PASSWORD
+        sync: false # Admin password (min 8 characters)
+      - key: SEED_PASSWORD
+        sync: false # Password for pre-seeded test accounts

@@ -6,6 +6,7 @@ import { useToast } from '../context/ToastContext';
 import { useMeta } from '../context/MetaContext';
 import { ConfirmDialog, EmptyState, ErrorAlert, Loader, Modal, PromptDialog, StatCard, StatusBadge } from '../components/ui';
 import { REPORT_REASONS, formatDate, formatValue, timeAgo } from '../utils/format';
+import SponsoredCard from '../components/SponsoredCard';
 
 const TABS = ['overview', 'users', 'listings', 'swaps', 'reports'];
 
@@ -94,6 +95,42 @@ function Overview() {
           tone="charcoal"
           icon={<span className="fs-4">💬</span>}
         />
+      </div>
+
+      {/* Sponsored Partner / Ad Unit (Native Grid Card format) */}
+      <div className="row g-4 my-2">
+        <div className="col-12 col-lg-5 col-xl-4">
+          <SponsoredCard />
+        </div>
+        <div className="col-12 col-lg-7 col-xl-8">
+          <div className="rw-panel h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div className="d-flex align-items-center justify-content-between mb-2">
+                <span className="badge bg-success-subtle text-success fw-semibold">
+                  🛡️ CHEAP AD BLOCKER: ACTIVE
+                </span>
+                <span className="badge bg-secondary-subtle text-secondary small font-monospace">
+                  100% SPAM-FREE
+                </span>
+              </div>
+              <h3 className="h6 fw-bold mb-2">Verified Sustainable Partner Network</h3>
+              <p className="small text-muted mb-3">
+                Cheap, scammy, gambling, and adult advertisements have been strictly blocked. Only verified circular fashion sponsors, eco garment care essentials, and upcycling kits are approved to display across SwapThread.
+              </p>
+              <div className="d-flex flex-wrap gap-2 mb-3">
+                <span className="rw-chip text-danger">🚫 Gambling / Casinos Blocked</span>
+                <span className="rw-chip text-danger">🚫 Adult / Dating Blocked</span>
+                <span className="rw-chip text-danger">🚫 Piracy / Warez Blocked</span>
+                <span className="rw-chip text-success">✅ Eco Garment Care Approved</span>
+                <span className="rw-chip text-success">✅ Circular Fashion Approved</span>
+              </div>
+            </div>
+            <div className="pt-3 border-top mt-2 d-flex justify-content-between align-items-center small text-muted">
+              <span>Blocked Networks: bicea.org, afders.org, arwf.org, adsterra</span>
+              <span className="text-success fw-medium">● Protection Shield Running</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="row g-4 mt-1">

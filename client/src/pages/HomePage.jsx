@@ -5,6 +5,7 @@ import { useAsync } from '../hooks/useAsync';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import ListingCard from '../components/ListingCard';
+import SponsoredCard from '../components/SponsoredCard';
 import { Avatar, ErrorAlert, Modal, SkeletonGrid } from '../components/ui';
 
 const CATEGORIES = [
@@ -22,7 +23,7 @@ const STEPS = [
   {
     n: '01',
     title: 'List clothes you don’t wear',
-    text: 'Snap a few photos, pick brand, size, and condition. ReWear calculates an estimated swap value so comparisons are transparent.',
+    text: 'Snap a few photos, pick brand, size, and condition. SwapThread calculates an estimated swap value so comparisons are transparent.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
@@ -87,7 +88,7 @@ const INITIAL_REVIEWS = [
     traded: 'H&M Tiered Midi Dress ⇄ Mango Floral Wrap Top',
     date: '1 week ago',
     quote:
-      'ReWear completely cured my fast-fashion craving. Instead of buying trendy tops for weekend dinners, I swap pieces I have already photographed. Quality was exactly as pictured and freshly cleaned.',
+      'SwapThread completely cured my fast-fashion craving. Instead of buying trendy tops for weekend dinners, I swap pieces I have already photographed. Quality was exactly as pictured and freshly cleaned.',
   },
   {
     id: 'rev-4',
@@ -135,14 +136,14 @@ const FAQS = [
   {
     id: 'faq-1',
     category: 'basics',
-    q: 'How does a clothing swap actually work on ReWear?',
+    q: 'How does a clothing swap actually work on SwapThread?',
     a: 'It’s simple: List any clean, wearable clothing or accessories you no longer wear with photos, size, and condition. Browse other members’ closets in your city or across India. When you spot an item you love, tap "Propose Swap" and select an item from your wardrobe to offer in return. Once the owner accepts, you coordinate via built-in private chat to exchange locally or ship via courier.',
   },
   {
     id: 'faq-2',
     category: 'values',
-    q: 'Is ReWear really 100% money-free?',
-    a: 'Yes, completely! ReWear is strictly a cashless exchange marketplace. You never buy, sell, or pay cash for garments. Swaps are direct 1-to-1 clothing trades. The only expense is standard courier postage if you choose to mail garments instead of meeting in person.',
+    q: 'Is SwapThread really 100% money-free?',
+    a: 'Yes, completely! SwapThread is strictly a cashless exchange marketplace. You never buy, sell, or pay cash for garments. Swaps are direct 1-to-1 clothing trades. The only expense is standard courier postage if you choose to mail garments instead of meeting in person.',
   },
   {
     id: 'faq-3',
@@ -166,7 +167,7 @@ const FAQS = [
     id: 'faq-6',
     category: 'safety',
     q: 'What if the garment doesn’t fit or isn’t as described?',
-    a: 'We always recommend checking flat-lay measurements in chat before agreeing to a swap. If an item arrives significantly different from the photos or description, you can report it via the "Report" button for moderator review, or re-list it on ReWear to swap with someone else.',
+    a: 'We always recommend checking flat-lay measurements in chat before agreeing to a swap. If an item arrives significantly different from the photos or description, you can report it via the "Report" button for moderator review, or re-list it on SwapThread to swap with someone else.',
   },
   {
     id: 'faq-7',
@@ -246,7 +247,7 @@ export default function HomePage() {
                 Give your clothes a second life. <em>Swap, don&apos;t shop.</em>
               </h1>
               <p className="rw-lead mb-4">
-                ReWear connects conscious fashion lovers to refresh wardrobes directly without buying new. Trade pre-loved pieces with people in your city.
+                SwapThread connects conscious fashion lovers to refresh wardrobes directly without buying new. Trade pre-loved pieces with people in your city.
               </p>
 
               <div className="d-flex flex-column flex-sm-row gap-3">
@@ -309,7 +310,7 @@ export default function HomePage() {
       <section className="container py-4 py-lg-5" aria-labelledby="how-title">
         <div className="text-center mb-4 pb-2">
           <span className="rw-eyebrow mb-2">Sustainable & Simple</span>
-          <h2 id="how-title" className="rw-section-title mb-2">How ReWear works</h2>
+          <h2 id="how-title" className="rw-section-title mb-2">How SwapThread works</h2>
           <p className="rw-lead mx-auto">Three simple steps to swap your way into a refreshed, circular wardrobe.</p>
         </div>
         <div className="row g-4">
@@ -345,7 +346,15 @@ export default function HomePage() {
 
         {!loading && (
           <div className="row g-3 g-md-4">
-            {(data?.items || []).map((l) => (
+            {(data?.items || []).slice(0, 3).map((l) => (
+              <div className="col-6 col-md-4 col-lg-3" key={l.id}>
+                <ListingCard listing={l} />
+              </div>
+            ))}
+            <div className="col-6 col-md-4 col-lg-3" key="sponsored-grid-ad">
+              <SponsoredCard />
+            </div>
+            {(data?.items || []).slice(3).map((l) => (
               <div className="col-6 col-md-4 col-lg-3" key={l.id}>
                 <ListingCard listing={l} />
               </div>
@@ -451,7 +460,7 @@ export default function HomePage() {
           <span className="rw-eyebrow mb-2">Got questions? We&apos;ve got answers</span>
           <h2 id="faq-title" className="rw-section-title mb-2">Frequently Asked Questions</h2>
           <p className="rw-lead mx-auto">
-            Everything you need to know about clothing swaps, fair values, shipping, and safe exchanges on ReWear.
+            Everything you need to know about clothing swaps, fair values, shipping, and safe exchanges on SwapThread.
           </p>
         </div>
 

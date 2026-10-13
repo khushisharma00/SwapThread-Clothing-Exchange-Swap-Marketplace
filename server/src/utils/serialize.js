@@ -5,6 +5,13 @@ const categoryLabel = (v) => CATEGORIES.find((c) => c.value === v)?.label || v;
 const conditionLabel = (v) => CONDITIONS.find((c) => c.value === v)?.label || v;
 
 function imageUrl(id) {
+  if (!id) return '';
+  if (typeof id === 'string' && (id.startsWith('http://') || id.startsWith('https://'))) {
+    return id;
+  }
+  if (id && typeof id === 'object' && id.url) {
+    return id.url;
+  }
   return `/api/images/${id}`;
 }
 

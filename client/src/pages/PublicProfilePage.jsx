@@ -88,7 +88,7 @@ export default function PublicProfilePage() {
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
         <span>
-          <strong>Community Privacy:</strong> For member safety, ReWear never shows email addresses, phone numbers, or exact addresses. Logistics are coordinated in the swap chat.
+          <strong>Community Privacy:</strong> For member safety, SwapThread never shows email addresses, phone numbers, or exact addresses. Logistics are coordinated in the swap chat.
         </span>
       </div>
 

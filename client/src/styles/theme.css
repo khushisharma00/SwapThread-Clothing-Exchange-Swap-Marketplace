@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ReWear Theme & Design System
+   SwapThread Theme & Design System
    Stack: React 18 + Bootstrap 5 (Custom CSS Tokens & Components)
    Palette: Forest Green (#2f6b4f), Cream (#f7f3ea), Charcoal (#23272a), Warm Neutrals
    Typography: Fraunces (Headings), Inter (Body)
@@ -2538,6 +2538,147 @@ a:hover {
   padding: var(--rw-sp-4);
   box-shadow: var(--rw-shadow-1);
 }
+
+/* --------------------------------------------------------------------------
+   19. SPONSORED AD CARD (NATIVE GRID CARD MATCHING USER DESIGN)
+   -------------------------------------------------------------------------- */
+.rw-sponsored-card {
+  background: #0d1527;
+  color: #f1f5f9;
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  border-radius: var(--rw-r-lg, 16px);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-theme="dark"] .rw-sponsored-card {
+  background: #09101d;
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.rw-sponsored-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.rw-sponsored-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.rw-sponsored-pill {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.14);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 4px;
+}
+
+.rw-sponsored-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.rw-sponsored-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.3rem 0;
+  letter-spacing: -0.01em;
+}
+
+.rw-sponsored-desc {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  line-height: 1.45;
+  margin: 0 0 0.9rem 0;
+}
+
+.rw-sponsored-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.rw-sponsored-item {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.rw-sponsored-item:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.rw-sponsored-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #1e293b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.rw-sponsored-thumb {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rw-sponsored-item-title {
+  font-size: 0.68rem;
+  line-height: 1.25;
+  color: #cbd5e1;
+  margin-top: 0.35rem;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.rw-sponsored-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: 0.72rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#container-33d6564d33a0599ed89bce4b522f54ad {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
 
 
 

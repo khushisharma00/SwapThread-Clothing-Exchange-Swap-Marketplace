@@ -13,13 +13,15 @@ function validate(mode, f) {
     if (!f.name.trim() || f.name.trim().length < 2) e.name = 'Enter your name (at least 2 characters)';
     if (!f.city) e.city = 'Choose your city so we can show nearby swaps';
   }
-  if (!EMAIL_RE.test(f.email.trim())) e.email = 'Enter a valid email address';
   if (mode === 'register') {
+    if (!EMAIL_RE.test(f.email.trim())) e.email = 'Enter a valid email address';
     if (f.password.length < 8) e.password = 'Use at least 8 characters';
     else if (!/[A-Za-z]/.test(f.password) || !/\d/.test(f.password)) e.password = 'Include at least one letter and one number';
     if (f.confirm !== f.password) e.confirm = 'Passwords do not match';
-  } else if (!f.password) {
-    e.password = 'Enter your password';
+  } else {
+    if (!f.email.trim()) e.email = 'Enter your email or username';
+    else if (f.email.trim().toLowerCase() !== 'admin' && !EMAIL_RE.test(f.email.trim())) e.email = 'Enter a valid email address';
+    if (!f.password) e.password = 'Enter your password';
   }
   return e;
 }
@@ -69,7 +71,7 @@ export default function AuthPage({ mode }) {
     try {
       if (isRegister) {
         await register({ name: form.name.trim(), email: form.email.trim(), password: form.password, city: form.city });
-        notify('Welcome to ReWear! List your first item to start swapping.');
+        notify('Welcome to SwapThread! List your first item to start swapping.');
         navigate('/dashboard/listings/new', { replace: true });
       } else {
         await login(form.email.trim(), form.password);
@@ -143,15 +145,15 @@ export default function AuthPage({ mode }) {
                     </Field>
                   )}
 
-                  <Field id="email" label="Email address" error={errors.email} required>
+                  <Field id="email" label={isRegister ? "Email address" : "Email or Username"} error={errors.email} required>
                     <input
                       id="email"
-                      type="email"
+                      type={isRegister ? "email" : "text"}
                       className={`form-control ${inv('email')}`}
-                      placeholder="you@example.com"
+                      placeholder={isRegister ? "you@example.com" : "admin or you@example.com"}
                       value={form.email}
                       onChange={set('email')}
-                      autoComplete="email"
+                      autoComplete="username"
                       aria-invalid={!!errors.email}
                     />
                   </Field>
@@ -246,12 +248,12 @@ export default function AuthPage({ mode }) {
                   )}
 
                   <button type="submit" className="btn btn-success w-100 btn-lg mt-3" disabled={busy}>
-                    {busy ? 'Please wait…' : isRegister ? 'Create free account' : 'Log in to ReWear'}
+                    {busy ? 'Please wait…' : isRegister ? 'Create free account' : 'Log in to SwapThread'}
                   </button>
                 </form>
 
                 <p className="text-center small text-muted mt-4 mb-0">
-                  {isRegister ? 'Already registered? ' : 'New to ReWear? '}
+                  {isRegister ? 'Already registered? ' : 'New to SwapThread? '}
                   <Link to={isRegister ? '/login' : '/register'} className="rw-link fw-semibold">
                     {isRegister ? 'Sign in here' : 'Create an account'}
                   </Link>
@@ -266,7 +268,7 @@ export default function AuthPage({ mode }) {
                     Every garment has another chapter.
                   </h2>
                   <p className="text-success-emphasis opacity-85 fs-6 rw-reading-width">
-                    ReWear is a direct clothing exchange designed to eradicate textile waste. No virtual currencies, no hidden fees, no payments. Just wardrobes in circulation.
+                    SwapThread is a direct clothing exchange designed to eradicate textile waste. No virtual currencies, no hidden fees, no payments. Just wardrobes in circulation.
                   </p>
                 </div>
 

@@ -39,7 +39,7 @@ export function ThemeToggle({ className = '', showLabel = false, size = 'md' }) 
 
 export function Logo({ light = false }) {
   return (
-    <span className={`rw-logo ${light ? 'rw-logo-light' : ''}`} aria-label="ReWear">
+    <span className={`rw-logo ${light ? 'rw-logo-light' : ''}`} aria-label="SwapThread">
       <svg viewBox="0 0 64 64" width="32" height="32" aria-hidden="true">
         <rect width="64" height="64" rx="16" fill={light ? '#f7f3ea' : '#2f6b4f'} />
         <path
@@ -48,7 +48,7 @@ export function Logo({ light = false }) {
         />
       </svg>
       <span className="rw-logo-text">
-        Re<em>Wear</em>
+        Swap<em>Thread</em>
       </span>
     </span>
   );

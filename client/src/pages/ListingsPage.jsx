@@ -5,6 +5,7 @@ import { useAsync, useDebounce } from '../hooks/useAsync';
 import { useMeta } from '../context/MetaContext';
 import { useAuth } from '../context/AuthContext';
 import ListingCard from '../components/ListingCard';
+import SponsoredCard from '../components/SponsoredCard';
 import { EmptyState, ErrorAlert, Modal, Pagination, SkeletonGrid } from '../components/ui';
 
 const FILTER_KEYS = ['q', 'category', 'size', 'condition', 'city', 'radiusKm', 'sort', 'includeUnavailable', 'page'];
@@ -332,7 +333,15 @@ export default function ListingsPage() {
 
           {!loading && data && data.items.length > 0 && (
             <div className="row g-3 g-md-4">
-              {data.items.map((l) => (
+              {data.items.slice(0, 3).map((l) => (
+                <div className="col-6 col-md-4" key={l.id}>
+                  <ListingCard listing={l} />
+                </div>
+              ))}
+              <div className="col-6 col-md-4" key="sponsored-grid-card">
+                <SponsoredCard />
+              </div>
+              {data.items.slice(3).map((l) => (
                 <div className="col-6 col-md-4" key={l.id}>
                   <ListingCard listing={l} />
                 </div>

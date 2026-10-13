@@ -46,7 +46,7 @@ export default function MainLayout() {
       {/* Top Navbar */}
       <header className="rw-nav">
         <nav className="navbar navbar-expand-xl container" aria-label="Main navigation">
-          <Link to="/" className="navbar-brand py-0 me-3" aria-label="ReWear homepage">
+          <Link to="/" className="navbar-brand py-0 me-3" aria-label="SwapThread homepage">
             <Logo />
           </Link>
 
@@ -117,7 +117,7 @@ export default function MainLayout() {
                     Log in
                   </Link>
                   <Link to="/register" className="btn btn-success btn-sm text-center">
-                    Join ReWear
+                    Join SwapThread
                   </Link>
                 </>
               )}
@@ -203,7 +203,7 @@ export default function MainLayout() {
             <div className="col-12 col-md-5">
               <Logo light />
               <p className="mt-3 mb-0 rw-reading-width opacity-85">
-                Swap, don&apos;t shop. ReWear helps people exchange pre-loved clothes directly — no payments, no waste, just better wardrobes.
+                Swap, don&apos;t shop. SwapThread helps people exchange pre-loved clothes directly — no payments, no waste, just better wardrobes.
               </p>
             </div>
             <div className="col-6 col-md-3">
@@ -228,7 +228,7 @@ export default function MainLayout() {
             </div>
           </div>
           <div className="rw-footer-bottom d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
-            <span>© {new Date().getFullYear()} ReWear · Built for sustainable clothing exchange</span>
+            <span>© {new Date().getFullYear()} SwapThread · Built for sustainable clothing exchange</span>
             <span className="opacity-75">100% money-free swapping</span>
           </div>
         </div>

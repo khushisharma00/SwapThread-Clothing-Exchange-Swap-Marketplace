@@ -300,7 +300,7 @@ export default function ListingDetailPage() {
                 </button>
                 {openQa === 'clean' && (
                   <div className="rw-faq-answer small pt-2 pb-3 px-3">
-                    All ReWear community members agree to freshly wash or dry-clean clothes prior to exchange. This garment is rated in <strong>{listing.conditionLabel}</strong> condition.
+                    All SwapThread community members agree to freshly wash or dry-clean clothes prior to exchange. This garment is rated in <strong>{listing.conditionLabel}</strong> condition.
                   </div>
                 )}
               </div>

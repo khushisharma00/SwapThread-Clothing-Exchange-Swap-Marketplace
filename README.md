@@ -1,8 +1,8 @@
-# ReWear — Clothing Exchange & Swap Marketplace
+# SwapThread — Clothing Exchange & Swap Marketplace
 
-> **Swap, don't shop.** ReWear lets people exchange pre-loved clothes directly — no payments, less textile waste.
+> **Swap, don't shop.** SwapThread lets people exchange pre-loved clothes directly — no payments, less textile waste.
 
-ReWear is a full-stack web application (React + Node.js/Express + MongoDB) where members list clothes they no longer wear, browse items from others, propose swaps by offering one of their own items, negotiate in a built-in chat and confirm the exchange. A deterministic **swap value calculator** helps keep swaps fair, **location-based matching** surfaces nearby opportunities, and an **admin panel** handles moderation, disputes and analytics.
+SwapThread is a full-stack web application (React + Node.js/Express + MongoDB) where members list clothes they no longer wear, browse items from others, propose swaps by offering one of their own items, negotiate in a built-in chat and confirm the exchange. A deterministic **swap value calculator** helps keep swaps fair, **location-based matching** surfaces nearby opportunities, and an **admin panel** handles moderation, disputes and analytics.
 
 - **Live demo:** _add your Render URL here after deploying (see [Deployment](#13-deploy-to-render-live-link))_
 - **Product requirements:** [`docs/PRD.md`](docs/PRD.md)

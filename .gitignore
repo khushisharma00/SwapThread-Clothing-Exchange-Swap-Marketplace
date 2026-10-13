@@ -1,15 +1,34 @@
 # Dependencies
 node_modules/
+server/node_modules/
+client/node_modules/
 
-# Builds
+# Builds & Outputs
+dist/
 client/dist/
+build/
 coverage/
+
+# Local databases, uploads & ephemeral media
 .data/
+server/.data/
+uploads/
+media/
+db.sqlite3
+staticfiles/
+
+# Virtual environments & legacy archives
+.venv/
+_django_archive/
 
 # Environment files (NEVER commit secrets)
 .env
 .env.*
+server/.env
+server/.env.*
 !.env.example
+!server/.env.example
+!client/.env.example
 
 # Logs & OS files
 *.log
