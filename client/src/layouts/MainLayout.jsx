@@ -210,16 +210,21 @@ export default function MainLayout() {
               <h2 className="rw-footer-h">Explore</h2>
               <ul className="list-unstyled mb-0">
                 <li><Link to="/listings">Browse clothes</Link></li>
-                <li><Link to="/profile">Nearby swaps</Link></li>
+                <li><a href="/#reviews">Community Reviews</a></li>
+                <li><a href="/#faq">Q&amp;A / FAQ</a></li>
                 <li><Link to="/dashboard/listings/new">List an item</Link></li>
                 <li><Link to="/login">Sign in</Link></li>
               </ul>
             </div>
             <div className="col-6 col-md-4">
-              <h2 className="rw-footer-h">How values work</h2>
-              <p className="small mb-0 opacity-85">
+              <h2 className="rw-footer-h">Community &amp; Values</h2>
+              <p className="small mb-2 opacity-85">
                 Every garment is assigned an <strong>estimated swap value</strong> based on category, brand tier, and condition. These are fair-match benchmarks — not prices.
               </p>
+              <div className="d-flex flex-wrap gap-2 pt-1">
+                <a href="/#faq" className="badge bg-light text-dark text-decoration-none">Q&amp;A / FAQ</a>
+                <a href="/#reviews" className="badge bg-light text-dark text-decoration-none">★ 4.9 Swapper Reviews</a>
+              </div>
             </div>
           </div>
           <div className="rw-footer-bottom d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">

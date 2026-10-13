@@ -19,6 +19,7 @@ export default function ListingDetailPage() {
   const [imgIdx, setImgIdx] = useState(0);
   const [proposing, setProposing] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [openQa, setOpenQa] = useState(null);
 
   if (loading) return <div className="container py-5"><Loader label="Loading garment details…" /></div>;
   if (error) {
@@ -247,6 +248,84 @@ export default function ListingDetailPage() {
             <p className="rw-description rw-panel p-3 rounded-3 mb-0">
               {listing.description}
             </p>
+          </div>
+
+          {/* Garment Q&A & Fit Guidance */}
+          <div className="rw-garment-qa mb-4">
+            <div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+              <div>
+                <span className="rw-eyebrow mb-1">Pre-Swap Q&A</span>
+                <h3 className="h6 fw-bold mb-0">Garment Q&A & Fit Advice</h3>
+              </div>
+              <span className="badge bg-success-subtle text-success-emphasis">
+                ✓ Verified Swap Guidelines
+              </span>
+            </div>
+
+            <div className="rw-faq-list" style={{ gap: '0.5rem' }}>
+              <div className={`rw-faq-item ${openQa === 'size' ? 'open' : ''}`}>
+                <button
+                  type="button"
+                  className="rw-faq-question py-2 px-3 small"
+                  onClick={() => setOpenQa(openQa === 'size' ? null : 'size')}
+                  aria-expanded={openQa === 'size'}
+                >
+                  <span>📏 How does the sizing & fit run for this {listing.clothingType}?</span>
+                  <span className="rw-faq-icon" aria-hidden="true" style={{ width: 22, height: 22 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </span>
+                </button>
+                {openQa === 'size' && (
+                  <div className="rw-faq-answer small pt-2 pb-3 px-3">
+                    This item is tagged size <strong>{listing.size}</strong> ({listing.audience || 'unisex'}). Sizing can vary across brands like {listing.brand}. For a guaranteed fit, you can ask <strong>{listing.owner?.name?.split(' ')[0] || 'the owner'}</strong> in swap chat for exact flat measurements (chest, waist, sleeve, total length).
+                  </div>
+                )}
+              </div>
+
+              <div className={`rw-faq-item ${openQa === 'clean' ? 'open' : ''}`}>
+                <button
+                  type="button"
+                  className="rw-faq-question py-2 px-3 small"
+                  onClick={() => setOpenQa(openQa === 'clean' ? null : 'clean')}
+                  aria-expanded={openQa === 'clean'}
+                >
+                  <span>🧼 What is the cleanliness standard for this piece?</span>
+                  <span className="rw-faq-icon" aria-hidden="true" style={{ width: 22, height: 22 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </span>
+                </button>
+                {openQa === 'clean' && (
+                  <div className="rw-faq-answer small pt-2 pb-3 px-3">
+                    All ReWear community members agree to freshly wash or dry-clean clothes prior to exchange. This garment is rated in <strong>{listing.conditionLabel}</strong> condition.
+                  </div>
+                )}
+              </div>
+
+              <div className={`rw-faq-item ${openQa === 'delivery' ? 'open' : ''}`}>
+                <button
+                  type="button"
+                  className="rw-faq-question py-2 px-3 small"
+                  onClick={() => setOpenQa(openQa === 'delivery' ? null : 'delivery')}
+                  aria-expanded={openQa === 'delivery'}
+                >
+                  <span>📍 How will I exchange this garment with the owner?</span>
+                  <span className="rw-faq-icon" aria-hidden="true" style={{ width: 22, height: 22 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </span>
+                </button>
+                {openQa === 'delivery' && (
+                  <div className="rw-faq-answer small pt-2 pb-3 px-3">
+                    The owner is based in <strong>{listing.location.city}</strong>. If you are in the same city, you can meet in a public location. For distance trades, both parties ship via courier (e.g. India Post or Delhivery) and share parcel tracking in chat.
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Desktop Action Area */}
