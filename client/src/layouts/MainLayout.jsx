@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
-import { Avatar, Logo } from '../components/ui';
+import { Avatar, Logo, ThemeToggle } from '../components/ui';
 
 function NavItem({ to, children, end }) {
   return (
@@ -50,29 +50,32 @@ export default function MainLayout() {
             <Logo />
           </Link>
 
-          <button
-            className="navbar-toggler border-0 p-2 shadow-none"
-            type="button"
-            aria-controls="rw-navbar"
-            aria-expanded={open}
-            aria-label="Toggle navigation"
-            onClick={() => setOpen((o) => !o)}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              {open ? (
-                <>
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </>
-              ) : (
-                <>
-                  <line x1="4" y1="7" x2="20" y2="7" />
-                  <line x1="4" y1="12" x2="20" y2="12" />
-                  <line x1="4" y1="17" x2="20" y2="17" />
-                </>
-              )}
-            </svg>
-          </button>
+          <div className="d-flex align-items-center gap-2 ms-auto d-xl-none">
+            <ThemeToggle size="sm" />
+            <button
+              className="navbar-toggler border-0 p-2 shadow-none"
+              type="button"
+              aria-controls="rw-navbar"
+              aria-expanded={open}
+              aria-label="Toggle navigation"
+              onClick={() => setOpen((o) => !o)}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                {open ? (
+                  <>
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </>
+                ) : (
+                  <>
+                    <line x1="4" y1="7" x2="20" y2="7" />
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <line x1="4" y1="17" x2="20" y2="17" />
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
 
           <div className={`collapse navbar-collapse ${open ? 'show' : ''}`} id="rw-navbar">
             <ul className="navbar-nav me-auto mb-3 mb-xl-0">
@@ -85,6 +88,7 @@ export default function MainLayout() {
             </ul>
 
             <div className="d-flex flex-column flex-xl-row gap-2 align-items-stretch align-items-xl-center pt-2 pt-xl-0 border-top border-xl-0">
+              <ThemeToggle className="d-none d-xl-inline-flex me-1" />
               {user ? (
                 <>
                   <Link to="/dashboard/listings/new" className="btn btn-success btn-sm w-100 w-xl-auto justify-content-center">

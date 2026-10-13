@@ -1797,3 +1797,332 @@ a:hover {
   }
 }
 
+/* --------------------------------------------------------------------------
+   17. THEME TOGGLE BUTTON
+   -------------------------------------------------------------------------- */
+.rw-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  min-height: 40px;
+  min-width: 40px;
+  background-color: var(--rw-sand);
+  color: var(--rw-ink);
+  border: 1px solid var(--rw-line);
+  border-radius: var(--rw-r-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--rw-shadow-1);
+  user-select: none;
+}
+
+.rw-theme-toggle:hover {
+  background-color: var(--rw-sand-light);
+  border-color: var(--rw-green);
+  color: var(--rw-green);
+  transform: translateY(-1px);
+}
+
+.rw-theme-toggle:active {
+  transform: translateY(0);
+}
+
+.rw-theme-toggle-sm {
+  padding: 0.35rem;
+  min-height: 38px;
+  min-width: 38px;
+}
+
+.rw-theme-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rw-theme-toggle:hover .rw-theme-toggle-icon {
+  transform: rotate(18deg) scale(1.12);
+}
+
+/* --------------------------------------------------------------------------
+   18. DARK MODE DESIGN SYSTEM & TOKENS
+   Activated via [data-theme="dark"] on <html>
+   -------------------------------------------------------------------------- */
+[data-theme="dark"],
+:root[data-bs-theme="dark"] {
+  /* Brand Colours (Luminance Adjusted for Dark Surfaces) */
+  --rw-cream: #121614;
+  --rw-cream-card: #1c221e;
+  --rw-sand: #252e29;
+  --rw-sand-light: #181f1b;
+  --rw-line: #2d3832;
+  --rw-line-dark: #3f4e46;
+  --rw-charcoal: #e6ede8;
+  --rw-ink: #f4f8f5;
+  --rw-muted: #9aa8a1;
+  --rw-muted-light: #728078;
+
+  --rw-green: #48a577;
+  --rw-green-dark: #38845e;
+  --rw-green-hover: #5bbd8c;
+  --rw-green-soft: #193525;
+  --rw-green-subtle: #13271b;
+
+  --rw-amber: #e09f3e;
+  --rw-amber-dark: #f6c26e;
+  --rw-amber-soft: #382914;
+
+  --rw-red: #e05d52;
+  --rw-red-dark: #f28b82;
+  --rw-red-soft: #3d1c1a;
+
+  --rw-blue: #4da3ff;
+  --rw-blue-soft: #172d42;
+
+  /* Bootstrap Variable Bridges */
+  --bs-body-color: var(--rw-charcoal);
+  --bs-body-bg: var(--rw-cream);
+  --bs-link-color-rgb: 72, 165, 119;
+  --bs-link-hover-color-rgb: 91, 189, 140;
+  --bs-border-color: var(--rw-line);
+
+  /* Shadows (Dark Mode Elevated Surfaces) */
+  --rw-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.35);
+  --rw-shadow-2: 0 4px 14px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.35);
+  --rw-shadow-3: 0 16px 38px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0.45);
+  --rw-shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.65), 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark Mode Navigation & Chrome */
+[data-theme="dark"] .rw-nav {
+  background: rgba(18, 22, 20, 0.92);
+  border-bottom: 1px solid var(--rw-line);
+}
+
+[data-theme="dark"] .rw-bottom-bar {
+  background: rgba(18, 22, 20, 0.95);
+  border-top: 1px solid var(--rw-line);
+}
+
+[data-theme="dark"] .rw-footer {
+  background: #0d110f;
+  border-top: 1px solid var(--rw-line);
+}
+
+@media (max-width: 991.98px) {
+  [data-theme="dark"] .rw-nav .navbar-collapse {
+    background: #181f1b;
+    border-color: var(--rw-line);
+  }
+}
+
+/* Dark Mode Cards, Panels & Badges */
+[data-theme="dark"] .card,
+[data-theme="dark"] .rw-card,
+[data-theme="dark"] .rw-listing-card,
+[data-theme="dark"] .rw-swap-card,
+[data-theme="dark"] .rw-panel,
+[data-theme="dark"] .rw-stat {
+  background-color: var(--rw-cream-card);
+  border-color: var(--rw-line);
+}
+
+[data-theme="dark"] .rw-listing-card:hover,
+[data-theme="dark"] .rw-swap-card:hover {
+  border-color: var(--rw-green);
+}
+
+/* Dark Mode Inputs, Selects & Forms */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: #1c221e;
+  border-color: var(--rw-line);
+  color: var(--rw-charcoal);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: #202722;
+  border-color: var(--rw-green);
+  color: #ffffff;
+  box-shadow: 0 0 0 0.25rem rgba(72, 165, 119, 0.25);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: var(--rw-muted-light);
+}
+
+[data-theme="dark"] .input-group-text {
+  background-color: var(--rw-sand);
+  border-color: var(--rw-line);
+  color: var(--rw-muted);
+}
+
+/* Dark Mode Buttons */
+[data-theme="dark"] .btn-outline-dark {
+  color: var(--rw-charcoal);
+  border-color: var(--rw-line-dark);
+  background: transparent;
+}
+
+[data-theme="dark"] .btn-outline-dark:hover {
+  background-color: var(--rw-sand);
+  border-color: var(--rw-muted);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .btn-light {
+  background-color: var(--rw-sand);
+  border-color: var(--rw-line);
+  color: var(--rw-charcoal);
+}
+
+[data-theme="dark"] .btn-light:hover {
+  background-color: var(--rw-sand-light);
+  border-color: var(--rw-line-dark);
+  color: #ffffff;
+}
+
+/* Dark Mode Table */
+[data-theme="dark"] .table {
+  color: var(--rw-charcoal);
+  --bs-table-color: var(--rw-charcoal);
+  --bs-table-bg: transparent;
+  border-color: var(--rw-line);
+}
+
+[data-theme="dark"] .table > :not(caption) > * > * {
+  background-color: transparent;
+  border-bottom-color: var(--rw-line);
+  color: inherit;
+}
+
+[data-theme="dark"] .table-hover > tbody > tr:hover > * {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Dark Mode Modals & Popovers */
+[data-theme="dark"] .modal-content {
+  background-color: #1a201d;
+  color: var(--rw-charcoal);
+  border-color: var(--rw-line);
+}
+
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-footer {
+  border-color: var(--rw-line);
+}
+
+[data-theme="dark"] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Dark Mode Chat */
+[data-theme="dark"] .rw-chat-window {
+  background-color: var(--rw-cream-card);
+  border-color: var(--rw-line);
+}
+
+[data-theme="dark"] .rw-chat-item:hover,
+[data-theme="dark"] .rw-chat-item.active {
+  background-color: var(--rw-sand);
+}
+
+[data-theme="dark"] .rw-msg-in {
+  background-color: var(--rw-sand);
+  color: var(--rw-charcoal);
+  border-color: var(--rw-line);
+}
+
+/* Dark Mode Empty States & Skeletons */
+[data-theme="dark"] .rw-empty {
+  background-color: var(--rw-sand-light);
+  border-color: var(--rw-line);
+}
+
+[data-theme="dark"] .rw-skeleton {
+  background: linear-gradient(90deg, #1d2420 25%, #2a342e 50%, #1d2420 75%);
+  background-size: 200% 100%;
+}
+
+/* Dark Mode Upload & Image Fallback */
+[data-theme="dark"] .rw-img-fallback {
+  background: linear-gradient(135deg, #1b231f 0%, #222c26 100%);
+  color: var(--rw-muted);
+}
+
+[data-theme="dark"] .rw-upload-drop {
+  border-color: var(--rw-line);
+  background: var(--rw-sand-light);
+}
+
+[data-theme="dark"] .rw-upload-drop:hover {
+  border-color: var(--rw-green);
+  background: var(--rw-sand);
+}
+
+/* Dark Mode Members & Badges */
+[data-theme="dark"] .rw-member {
+  background: var(--rw-cream-card);
+  border-color: var(--rw-line);
+  color: var(--rw-charcoal);
+}
+
+[data-theme="dark"] .rw-member:hover {
+  background: var(--rw-sand);
+  border-color: var(--rw-green);
+  color: var(--rw-green-hover);
+}
+
+/* Dark Mode Hero */
+[data-theme="dark"] .rw-hero {
+  background: radial-gradient(circle at 90% 15%, rgba(72, 165, 119, 0.15) 0, transparent 50%), var(--rw-cream);
+}
+
+[data-theme="dark"] .rw-hero-points {
+  color: var(--rw-charcoal);
+}
+
+[data-theme="dark"] .rw-hero-tile.t1 {
+  background: #2b2024;
+  border-color: #44323a;
+}
+
+[data-theme="dark"] .rw-hero-tile.t2 {
+  background: #1c2733;
+  border-color: #2b3d4f;
+}
+
+[data-theme="dark"] .rw-hero-tile small {
+  color: var(--rw-charcoal);
+}
+
+/* Dark Mode Typography & Links */
+[data-theme="dark"] .rw-lead {
+  color: var(--rw-charcoal);
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--rw-muted) !important;
+}
+
+[data-theme="dark"] .rw-listing-card a {
+  color: var(--rw-charcoal);
+}
+
+[data-theme="dark"] .rw-listing-card a:hover {
+  color: var(--rw-green-hover);
+}
+
+[data-theme="dark"] .rw-cat-pill:hover {
+  background: var(--rw-green-soft);
+  color: #ffffff;
+  border-color: var(--rw-green);
+}
+
+
