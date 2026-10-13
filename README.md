@@ -5,7 +5,11 @@
 SwapThread is a full-stack web application (React + Node.js/Express + MongoDB) where members list clothes they no longer wear, browse items from others, propose swaps by offering one of their own items, negotiate in a built-in chat and confirm the exchange. A deterministic **swap value calculator** helps keep swaps fair, **location-based matching** surfaces nearby opportunities, and an **admin panel** handles moderation, disputes and analytics.
 
 - **Live demo:** _add your Render URL here after deploying (see [Deployment](#13-deploy-to-render-live-link))_
-- **Product requirements:** [`docs/PRD.md`](docs/PRD.md)
+- **Product requirements (PRD):** [`docs/PRD.md`](docs/PRD.md)
+- **Project Internship Report (MD):** [`docs/project_report.md`](docs/project_report.md)
+- **Project Report PDF (Downloadable):** [`docs/project_report.pdf`](docs/project_report.pdf)
+- **Feedback Video Script:** [`docs/demo_script.md`](docs/demo_script.md)
+- **Submission Checklist (4 Form Items):** [`docs/submission_checklist.md`](docs/submission_checklist.md)
 - **Database schema:** [`docs/DATABASE_SCHEMA.md`](docs/DATABASE_SCHEMA.md)
 - **Test report:** [`docs/TEST_REPORT.md`](docs/TEST_REPORT.md)
 
@@ -76,7 +80,7 @@ Values are always labelled **"estimated swap value"** — they are a guide for c
 | Backend | Node.js 20+, Express 4 (REST API) |
 | Database | MongoDB with Mongoose 8 (MongoDB Atlas in production) |
 | Auth & security | bcryptjs, jsonwebtoken (httpOnly cookie), helmet, cors, express-rate-limit, multer |
-| Images | Stored in MongoDB (≤ 2 MB each) — persistent on hosts with ephemeral disks, no extra account needed |
+| Images | Cloudinary (free tier) with fallback to MongoDB binary storage — persistent across ephemeral cloud restarts |
 | Testing | Jest + Supertest + mongodb-memory-server; GitHub Actions CI |
 | Hosting | Render (single web service) + MongoDB Atlas |
 
@@ -243,15 +247,20 @@ Open the **Terminal** app and run these one at a time.
 
 | Variable | Example | Purpose |
 |---|---|---|
-| `PORT` | `5000` | API port (Render sets this automatically) |
-| `NODE_ENV` | `development` / `production` | Enables secure cookies & generic errors in production |
-| `MONGODB_URI` | `mongodb://127.0.0.1:27017/rewear` | Database connection string |
-| `JWT_SECRET` | long random string | Signs login tokens (**required** in production) |
-| `JWT_EXPIRES_IN` | `7d` | Session length |
-| `CLIENT_ORIGIN` | `http://localhost:5173` | Allowed browser origin(s), comma-separated |
-| `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` | — | Only for `npm run create-admin` (leave empty in the file; pass on the command line) |
+| `PORT` | `5000` | API port (Render sets this dynamically) |
+| `NODE_ENV` | `production` | Enables secure cookies & generic production errors |
+| `DATABASE_URL` or `MONGODB_URI` | `mongodb+srv://user:pass@cluster.mongodb.net/rewear` | Hosted database connection string |
+| `JWT_SECRET` or `SECRET_KEY` | `64-character random hex` | Secret signing key for session tokens |
+| `JWT_EXPIRES_IN` | `7d` | Session lifetime |
+| `CLIENT_ORIGIN` or `CORS_ORIGIN` | `https://rewear-clothing-swap-marketplace.onrender.com` | Allowed browser origin for CORS (single or comma-separated) |
+| `CLOUDINARY_CLOUD_NAME` | `your_cloud_name` | Cloudinary account cloud name for persistent media |
+| `CLOUDINARY_API_KEY` | `123456789012345` | Cloudinary public API key |
+| `CLOUDINARY_API_SECRET` | `your_api_secret` | Cloudinary private secret key |
+| `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` | — | Non-interactive admin creation via CLI or script |
+| `SEED_USER_PASSWORD` | `DemoPassword123` | Deterministic password for all seeded demo accounts |
 
-`client/.env.example` contains `VITE_API_BASE_URL` — leave it empty (same-origin is the supported setup).
+`client/.env` / `client/.env.example`:
+- `VITE_API_URL` / `VITE_API_BASE_URL`: Optional when deploying unified single-origin on Render. If deploying frontend to Vercel separately, set this to your Render backend URL (e.g. `https://rewear-backend.onrender.com`).
 
 ## 10. Database, seed data & admin account
 
