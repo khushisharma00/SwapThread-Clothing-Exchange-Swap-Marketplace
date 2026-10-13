@@ -416,7 +416,7 @@ export default function ListingFormPage() {
             </h2>
 
             {!est && (
-              <div className="p-3 bg-white rounded-3 border text-center text-muted">
+              <div className="p-3 rw-panel rounded-3 text-center text-muted">
                 <span className="fs-3 d-block mb-1">👕</span>
                 Select Category, Brand, and Condition to generate the fair benchmark.
               </div>
@@ -426,10 +426,10 @@ export default function ListingFormPage() {
               <div>
                 <div className="d-flex justify-content-between align-items-baseline mb-2">
                   <div className="rw-value rw-value-lg">{formatValue(effective)}</div>
-                  <span className="badge bg-white text-success border">100% Cash-free</span>
+                  <span className="badge bg-success-subtle text-success border">100% Cash-free</span>
                 </div>
 
-                <div className="small text-muted p-3 bg-white rounded-3 border mb-3">
+                <div className="small text-muted p-3 rw-panel rounded-3 mb-3">
                   <div className="d-flex justify-content-between py-1 border-bottom">
                     <span>Base value:</span>
                     <strong>{formatValue(estimate.breakdown.baseValue)}</strong>

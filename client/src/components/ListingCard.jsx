@@ -48,7 +48,7 @@ export default function ListingCard({ listing, actions, showOwner = true }) {
 
           {showOwner && listing.owner?.name && (
             <div className="small text-muted text-truncate mt-1">
-              by <span className="fw-medium text-dark">{listing.owner.name}</span>
+              by <span className="fw-medium">{listing.owner.name}</span>
             </div>
           )}
         </div>

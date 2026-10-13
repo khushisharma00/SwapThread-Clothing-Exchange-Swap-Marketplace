@@ -59,7 +59,7 @@ export default function DashboardPage() {
   return (
     <div className="container py-4">
       {/* Header Profile Summary */}
-      <section className="rw-dash-head mb-4 p-4 bg-white rounded-4 border shadow-sm">
+      <section className="rw-dash-head mb-4 p-4">
         <div className="d-flex align-items-center gap-3 min-w-0">
           <Avatar user={user} size={64} />
           <div className="min-w-0">
@@ -132,7 +132,7 @@ export default function DashboardPage() {
         <ErrorAlert error={swaps.error} onRetry={swaps.reload} />
 
         {!swaps.loading && activeSwaps.length === 0 && (
-          <div className="p-4 bg-white rounded-4 border text-center text-muted">
+          <div className="p-4 rw-panel rounded-4 text-center text-muted">
             No pending swap requests right now.
           </div>
         )}
@@ -214,7 +214,7 @@ export default function DashboardPage() {
 
         {convos.loading && <Loader small />}
         {convos.data && convos.data.items.length === 0 && (
-          <div className="p-4 bg-white rounded-4 border text-center text-muted">
+          <div className="p-4 rw-panel rounded-4 text-center text-muted">
             Conversations will appear here when you send or receive swap requests.
           </div>
         )}
@@ -229,7 +229,7 @@ export default function DashboardPage() {
               <Avatar user={c.otherUser} size={40} />
               <div className="flex-grow-1 min-w-0">
                 <div className="d-flex justify-content-between align-items-baseline gap-2">
-                  <strong className="text-dark text-truncate">{c.otherUser?.name}</strong>
+                  <strong className="text-truncate">{c.otherUser?.name}</strong>
                   <small className="text-muted text-nowrap">{timeAgo(c.lastMessageAt)}</small>
                 </div>
                 <small className="text-muted d-block text-truncate">

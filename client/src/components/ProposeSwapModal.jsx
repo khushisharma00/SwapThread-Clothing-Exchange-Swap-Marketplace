@@ -122,7 +122,7 @@ export default function ProposeSwapModal({ listing, onClose }) {
           </fieldset>
 
           {chosen && (
-            <div className="mb-4 p-3 bg-light rounded-3 border">
+            <div className="mb-4 p-3 rw-panel rounded-3">
               <div className="form-label fw-bold mb-2">2. Value comparison</div>
               <ValueComparison offeredValue={chosen.listing.estimatedValue} requestedValue={listing.estimatedValue} />
             </div>

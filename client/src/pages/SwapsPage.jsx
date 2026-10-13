@@ -65,7 +65,7 @@ export default function SwapsPage() {
                 onClick={() => setParams({ tab: t.key }, { replace: true })}
               >
                 <span>{t.label}</span>
-                <span className={`badge ms-2 ${tab === t.key ? 'bg-success text-white' : 'bg-light text-dark border'}`}>
+                <span className={`badge ms-2 ${tab === t.key ? 'bg-success text-white' : 'bg-secondary-subtle border'}`}>
                   {count}
                 </span>
               </button>
@@ -78,7 +78,7 @@ export default function SwapsPage() {
 
       {loading && (
         <div className="d-flex flex-column gap-3">
-          <div className="p-4 bg-white border rounded-4"><Loader label="Loading your swap records…" /></div>
+          <div className="p-4 rw-panel rounded-4"><Loader label="Loading your swap records…" /></div>
         </div>
       )}
 
@@ -137,9 +137,9 @@ export default function SwapsPage() {
         <div className="row g-3 g-md-4">
           {(sugg.data?.items || []).slice(0, 6).map((s) => (
             <div className="col-12 col-md-6 col-lg-4" key={s.theirItem.id}>
-              <div className="card h-100 border rounded-4 p-2 shadow-sm bg-white">
+              <div className="card h-100 border rounded-4 p-2 shadow-sm">
                 <ListingCard listing={s.theirItem} />
-                <div className="p-2 mt-2 bg-light rounded-3 border">
+                <div className="p-2 mt-2 rw-panel rounded-3">
                   <div className="small fw-semibold text-muted mb-1">Swap comparison with yours:</div>
                   <ValueComparison
                     compact

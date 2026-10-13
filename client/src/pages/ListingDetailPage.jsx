@@ -165,7 +165,7 @@ export default function ListingDetailPage() {
 
           <h1 className="rw-page-title mb-1">{listing.title}</h1>
           <p className="text-muted fs-6 mb-3">
-            <span className="fw-semibold text-dark">{listing.brand}</span> · {listing.clothingType}
+            <span className="fw-semibold">{listing.brand}</span> · {listing.clothingType}
           </p>
 
           {/* Value Box */}
@@ -175,12 +175,12 @@ export default function ListingDetailPage() {
                 <div className="rw-value rw-value-lg">{formatValue(listing.estimatedValue)}</div>
                 <div className="rw-value-label">Estimated swap value · fair-match benchmark</div>
               </div>
-              <span className="badge bg-white text-success border px-2 py-1">No payment required</span>
+              <span className="badge bg-success-subtle text-success border px-2 py-1">No payment required</span>
             </div>
 
             <details className="small mt-3 pt-2 border-top border-success-subtle">
               <summary className="fw-semibold">How was this value calculated?</summary>
-              <div className="p-2 bg-white rounded-2 mt-2 border">
+              <div className="p-2 rw-panel rounded-2 mt-2">
                 <div className="d-flex justify-content-between py-1 border-bottom">
                   <span>Category base ({listing.categoryLabel}):</span>
                   <strong>{formatValue(b.baseValue)}</strong>
@@ -218,7 +218,7 @@ export default function ListingDetailPage() {
             </div>
             <div>
               <dt>Size</dt>
-              <dd className="badge bg-light text-dark fs-6 p-1">{listing.size}</dd>
+              <dd className="badge bg-secondary-subtle fs-6 p-1">{listing.size}</dd>
             </div>
             <div>
               <dt>Condition</dt>
@@ -244,7 +244,7 @@ export default function ListingDetailPage() {
           {/* Description */}
           <div className="mb-4">
             <h2 className="h6 fw-bold text-uppercase text-muted letter-spacing-1 mb-2">Description</h2>
-            <p className="rw-description text-secondary bg-light p-3 rounded-3 border mb-0">
+            <p className="rw-description rw-panel p-3 rounded-3 mb-0">
               {listing.description}
             </p>
           </div>

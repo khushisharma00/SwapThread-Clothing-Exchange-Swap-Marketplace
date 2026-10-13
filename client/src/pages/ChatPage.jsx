@@ -159,7 +159,7 @@ function Conversation({ swapId, onActivity }) {
 
       {/* Collapsible Swap Details Banner */}
       {showDetails && (
-        <div className="p-3 border-bottom bg-light">
+        <div className="p-3 border-bottom rw-panel">
           <SwapCard swap={swap} onChange={(s) => { setSwap(s); loadAll(); }} />
         </div>
       )}
@@ -288,7 +288,7 @@ export default function ChatPage() {
               <Avatar user={c.otherUser} size={38} />
               <span className="min-w-0 flex-grow-1">
                 <span className="d-flex justify-content-between align-items-baseline gap-2">
-                  <strong className="text-truncate text-dark">{c.otherUser?.name}</strong>
+                  <strong className="text-truncate">{c.otherUser?.name}</strong>
                   <small className="text-muted text-nowrap" style={{ fontSize: '0.72rem' }}>
                     {timeAgo(c.lastMessageAt)}
                   </small>

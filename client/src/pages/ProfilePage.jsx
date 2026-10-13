@@ -230,7 +230,7 @@ function Nearby() {
                 <span className="small text-muted">{data.suggestions.length} matched</span>
               </div>
               {data.suggestions.length === 0 ? (
-                <div className="p-3 bg-light rounded text-center small text-muted">
+                <div className="p-3 rw-panel rounded text-center small text-muted">
                   No fair-value matches nearby yet. <Link to="/dashboard/listings/new" className="rw-link fw-semibold">List more items</Link> or widen the radius.
                 </div>
               ) : (
@@ -239,7 +239,7 @@ function Nearby() {
                     <div className="col-md-6" key={s.theirItem.id}>
                       <div className="rw-suggestion">
                         <div className="small text-muted mb-1">
-                          Your <span className="fw-semibold text-dark">{s.yourItem.title}</span> for:
+                          Your <span className="fw-semibold">{s.yourItem.title}</span> for:
                         </div>
                         <Link to={`/listings/${s.theirItem.id}`} className="fw-bold rw-link text-truncate mb-1">
                           {s.theirItem.title}

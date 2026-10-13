@@ -67,7 +67,7 @@ export default function PublicProfilePage() {
             Member since {new Date(user.memberSince).toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
           </div>
           {user.bio ? (
-            <p className="mt-2 mb-0 text-dark small" style={{ maxWidth: '650px', lineHeight: 1.5 }}>
+            <p className="mt-2 mb-0 small" style={{ maxWidth: '650px', lineHeight: 1.5 }}>
               &ldquo;{user.bio}&rdquo;
             </p>
           ) : null}

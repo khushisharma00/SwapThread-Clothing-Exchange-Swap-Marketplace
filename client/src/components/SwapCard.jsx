@@ -8,14 +8,14 @@ import ReportButton from './ReportButton';
 import { ConfirmDialog, StatusBadge } from './ui';
 import { formatDate, timeAgo } from '../utils/format';
 
-function ItemMini({ item, caption, badgeBg = 'bg-light text-dark' }) {
+function ItemMini({ item, caption, badgeBg = 'bg-secondary-subtle' }) {
   if (!item) return null;
   return (
     <Link to={`/listings/${item.id}`} className="rw-swap-item text-decoration-none">
       <ItemImage src={item.images?.[0]} alt={item.title} category={item.category} />
       <div className="min-w-0 flex-grow-1">
         <span className={`badge ${badgeBg} mb-1 fw-bold`}>{caption}</span>
-        <strong className="d-block text-truncate text-dark">{item.title || 'Item'}</strong>
+        <strong className="d-block text-truncate">{item.title || 'Item'}</strong>
         <small className="d-block text-muted text-truncate">{item.brand} · Size {item.size}</small>
       </div>
     </Link>
@@ -76,14 +76,14 @@ export default function SwapCard({ swap, onChange }) {
             · {timeAgo(swap.createdAt)}
           </span>
         </div>
-        <span className="badge bg-light text-dark border">
+        <span className="badge bg-secondary-subtle border">
           {swap.exchangeMethod === 'undecided' ? '🤝 Decide in chat' : `📦 ${swap.exchangeMethod}`}
         </span>
       </header>
 
       <div className="rw-swap-body">
         <div className="rw-swap-items">
-          <ItemMini item={myItem} caption="You give" badgeBg="bg-secondary-subtle text-dark" />
+          <ItemMini item={myItem} caption="You give" badgeBg="bg-secondary-subtle" />
           <div className="rw-swap-arrow text-center" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="17 1 21 5 17 9" />
@@ -111,8 +111,8 @@ export default function SwapCard({ swap, onChange }) {
       )}
 
       {swap.status === 'accepted' && (
-        <div className="p-3 bg-light rounded-3 my-3 border">
-          <div className="small fw-semibold text-dark mb-1">Exchange Confirmation Status</div>
+        <div className="p-3 rw-panel rounded-3 my-3">
+          <div className="small fw-semibold mb-1">Exchange Confirmation Status</div>
           <div className="small text-muted">
             {iConfirmed ? '✓ You confirmed the exchange.' : '• Once you have received the item, confirm below.'}
             <br />

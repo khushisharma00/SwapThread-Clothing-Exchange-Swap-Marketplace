@@ -93,7 +93,7 @@ export default function AuthPage({ mode }) {
           <div className="card border-0 shadow-lg overflow-hidden rounded-4">
             <div className="row g-0">
               {/* Left Form Panel */}
-              <div className="col-12 col-md-7 col-lg-6 p-4 p-sm-5 bg-white">
+              <div className="col-12 col-md-7 col-lg-6 p-4 p-sm-5 rw-auth-form">
                 <div className="mb-4">
                   <Logo />
                   <h1 className="h3 fw-bold mt-3 mb-1">
@@ -270,11 +270,11 @@ export default function AuthPage({ mode }) {
                   </p>
                 </div>
 
-                <div className="bg-white p-4 rounded-4 shadow-sm border border-success-subtle mt-4">
+                <div className="rw-auth-guarantee p-4 rounded-4 shadow-sm border border-success-subtle mt-4">
                   <div className="d-flex align-items-center gap-3">
                     <div className="p-3 bg-success-subtle rounded-circle fs-3" aria-hidden="true">🌱</div>
                     <div>
-                      <strong className="d-block text-dark">Zero-payment guarantee</strong>
+                      <strong className="d-block">Zero-payment guarantee</strong>
                       <small className="text-muted">Pure item-for-item swapping powered by transparent value estimates.</small>
                     </div>
                   </div>
