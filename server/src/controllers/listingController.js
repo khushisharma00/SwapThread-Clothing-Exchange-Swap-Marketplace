@@ -8,6 +8,7 @@ const { serializeListing } = require('../utils/serialize');
 const { pointFromGeo, toGeoPoint, distanceKm, EARTH_RADIUS_KM } = require('../utils/geo');
 const { estimateValue, resolveListingValue, compareValues } = require('../services/valueCalculator');
 const { closeSwapsForRemovedListing } = require('../services/swapService');
+const { garmentSvg } = require('../services/garmentArt');
 
 const LISTING_RULES = {
   title: { type: 'string', required: true, min: 3, max: 80, label: 'Title' },
@@ -184,6 +185,15 @@ exports.create = asyncHandler(async (req, res) => {
   if (!city) throw ApiError.badRequest('Please choose a city (or set your city in your profile)', { city: 'City is required' });
   await assertOwnImages(data.images, req.user._id);
 
+  let images = data.images || [];
+  if (!images.length) {
+    const generated = await Image.insertMany([0, 1].map((variant) => {
+      const svg = garmentSvg({ category: data.category, color: data.color, brand: data.brand, title: data.title }, variant);
+      return { data: Buffer.from(svg, 'utf8'), contentType: 'image/svg+xml', size: Buffer.byteLength(svg), owner: req.user._id, generated: true };
+    }));
+    images = generated.map((x) => x._id);
+  }
+
   const est = estimateValue(data);
   const listing = await Listing.create({
     title: data.title,
@@ -198,7 +208,7 @@ exports.create = asyncHandler(async (req, res) => {
     calculatedValue: est.value,
     estimatedValue: resolveListingValue(est.value, data.requestedValue),
     valueBreakdown: est.breakdown,
-    images: data.images || [],
+    images,
     owner: req.user._id, // never from the client
     location: { city: city.name, state: city.state },
     geo: toGeoPoint(city),

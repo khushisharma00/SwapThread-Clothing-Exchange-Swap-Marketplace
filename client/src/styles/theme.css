@@ -336,6 +336,93 @@ a:hover {
   gap: var(--rw-sp-2);
 }
 
+/* Photo Upload Grid */
+.rw-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--rw-sp-3);
+  padding: var(--rw-sp-3);
+  border: 2px dashed var(--rw-line);
+  border-radius: var(--rw-r-md);
+  background: var(--rw-cream);
+  transition: border-color 0.2s ease;
+}
+@media (min-width: 576px) {
+  .rw-upload-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.rw-upload-item {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--rw-r-md);
+  overflow: hidden;
+  background: var(--rw-sand);
+  border: 1px solid var(--rw-line);
+  box-shadow: var(--rw-shadow-1);
+}
+.rw-upload-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rw-upload-actions {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  gap: 4px;
+  z-index: 2;
+}
+.rw-upload-actions .btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rw-r-sm);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--rw-line);
+}
+
+.rw-upload-cover {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  z-index: 2;
+  font-size: 0.68rem;
+  padding: 2px 6px;
+}
+
+.rw-upload-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--rw-r-md);
+  border: 1.5px dashed var(--rw-line-dark);
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  color: var(--rw-muted);
+  transition: all 0.2s ease;
+}
+.rw-upload-add:hover {
+  background: #ffffff;
+  border-color: var(--rw-green);
+  color: var(--rw-green);
+}
+.rw-upload-add small {
+  font-size: 0.72rem;
+  margin-top: 2px;
+  color: var(--rw-muted);
+}
+
 /* --------------------------------------------------------------------------
    5. LAYOUT & NAVIGATION
    -------------------------------------------------------------------------- */
@@ -595,6 +682,41 @@ a:hover {
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+}
+
+.rw-img-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 35%, #ffffff 0%, var(--rw-sand) 80%);
+  color: var(--rw-muted);
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--rw-line);
+}
+.rw-img-fallback span {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 3px 6px rgba(35, 39, 42, 0.08));
+  transition: transform 0.25s ease;
+}
+.rw-card:hover .rw-img-fallback span {
+  transform: scale(1.1);
+}
+.rw-img-fallback small {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--rw-ink-light);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--rw-r-full);
+  border: 1px solid var(--rw-line);
 }
 
 @media (hover: hover) {
