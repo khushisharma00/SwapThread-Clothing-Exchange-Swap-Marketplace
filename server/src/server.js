@@ -26,7 +26,9 @@ async function start() {
       }
     } else {
       console.error('✖ Could not connect to remote MongoDB. Check MONGODB_URI/DATABASE_URL in your environment.');
-      console.error(`  ${err.message}`);
+      const prefix = env.MONGODB_URI ? env.MONGODB_URI.split('@').pop() : '(empty)';
+      console.error(`  Target cluster host: ${prefix}`);
+      console.error(`  Error details: ${err.message}`);
       process.exit(1);
     }
   }

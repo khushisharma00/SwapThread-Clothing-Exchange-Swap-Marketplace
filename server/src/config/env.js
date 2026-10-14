@@ -15,12 +15,34 @@ if (!JWT_SECRET || JWT_SECRET === 'replace-with-a-long-random-secret') {
   JWT_SECRET = 'dev-only-insecure-secret-change-me';
 }
 
+function sanitizeMongoUri(raw) {
+  if (!raw) return '';
+  let str = String(raw).trim();
+  if (str.startsWith('MONGODB_URI=')) {
+    str = str.replace(/^MONGODB_URI=/, '').trim();
+  }
+  if (str.startsWith('DATABASE_URL=')) {
+    str = str.replace(/^DATABASE_URL=/, '').trim();
+  }
+  // Strip surrounding quotes
+  str = str.replace(/^['"]+|['"]+$/g, '').trim();
+  // If user pasted host directly without scheme (e.g. user:pass@cluster... or cluster...)
+  if (str && !str.startsWith('mongodb://') && !str.startsWith('mongodb+srv://')) {
+    if (str.includes('.mongodb.net')) {
+      str = 'mongodb+srv://' + str;
+    }
+  }
+  return str;
+}
+
+const resolvedMongoUri = sanitizeMongoUri(process.env.MONGODB_URI) || sanitizeMongoUri(process.env.DATABASE_URL) || 'mongodb://127.0.0.1:27017/rewear';
+
 const env = {
   NODE_ENV,
   isProduction,
   isTest,
   PORT: Number(process.env.PORT) || 5000,
-  MONGODB_URI: process.env.MONGODB_URI || process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017/rewear',
+  MONGODB_URI: resolvedMongoUri,
   JWT_SECRET,
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '7d',
   CLIENT_ORIGINS: (process.env.CLIENT_ORIGIN || process.env.CORS_ORIGIN || 'http://localhost:5173')
