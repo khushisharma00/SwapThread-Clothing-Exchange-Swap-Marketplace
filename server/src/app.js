@@ -46,7 +46,11 @@ function createApp() {
     cors({
       origin(origin, cb) {
         if (!origin) return cb(null, true);
-        if (env.CLIENT_ORIGINS.includes(origin) || env.CLIENT_ORIGINS.includes('*')) {
+        if (
+          env.CLIENT_ORIGINS.includes(origin) ||
+          env.CLIENT_ORIGINS.includes('*') ||
+          origin.endsWith('.onrender.com')
+        ) {
           return cb(null, true);
         }
         return cb(new Error(`CORS blocked for origin: ${origin}`));

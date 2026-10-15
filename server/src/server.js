@@ -25,10 +25,35 @@ async function start() {
         process.exit(1);
       }
     } else {
-      console.error('✖ Could not connect to remote MongoDB. Check MONGODB_URI/DATABASE_URL in your environment.');
-      const prefix = env.MONGODB_URI ? env.MONGODB_URI.split('@').pop() : '(empty)';
-      console.error(`  Target cluster host: ${prefix}`);
-      console.error(`  Error details: ${err.message}`);
+      console.error('\n' + '='.repeat(72));
+      console.error('✖ SwapThread Startup Error: Could not connect to MongoDB database.');
+      console.error('='.repeat(72));
+
+      const rawUri = env.MONGODB_URI || '';
+      const maskedUri = rawUri ? rawUri.replace(/:([^@]+)@/, ':****@') : '(empty)';
+      console.error(`  Configured URI: ${maskedUri}`);
+      console.error(`  Error message:  ${err.message}`);
+
+      if (!rawUri || (!rawUri.startsWith('mongodb://') && !rawUri.startsWith('mongodb+srv://'))) {
+        console.error('\n⚠️  DIAGNOSIS: Invalid MongoDB URI scheme.');
+        console.error('  The MONGODB_URI environment variable on Render appears to contain placeholder');
+        console.error('  text instead of your actual MongoDB Atlas connection string.');
+        console.error('\n👉 HOW TO FIX ON RENDER:');
+        console.error('  1. Go to your Render Dashboard (https://dashboard.render.com).');
+        console.error('  2. Click on your SwapThread web service.');
+        console.error('  3. Open the "Environment" tab in the left sidebar.');
+        console.error('  4. Find MONGODB_URI and replace the placeholder text with your real MongoDB Atlas connection string:');
+        console.error('     mongodb+srv://<username>:<password>@<cluster>.mongodb.net/swapthread?retryWrites=true&w=majority');
+        console.error('  5. Click "Save Changes" — Render will automatically redeploy successfully!');
+      } else if (rawUri.includes('<') || rawUri.includes('>')) {
+        console.error('\n⚠️  DIAGNOSIS: Connection string contains unreplaced angle brackets ("<" or ">").');
+        console.error('  Please replace <username> and <password> with your actual MongoDB user credentials.');
+      } else {
+        console.error('\n👉 TROUBLESHOOTING TIPS:');
+        console.error('  1. In MongoDB Atlas, go to "Network Access" and ensure 0.0.0.0/0 (Allow Anywhere) is enabled.');
+        console.error('  2. In MongoDB Atlas, verify your Database User username & password in "Database Access".');
+      }
+      console.error('='.repeat(72) + '\n');
       process.exit(1);
     }
   }
